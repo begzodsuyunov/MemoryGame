@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.memorygame.presentation.ui.screen.fragment.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.memorygame.presentation.ui.screen.fragment.main.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_miniLevelFragment"
+            app:destination="@id/miniLevelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/miniLevelFragment"
+        android:name="com.example.memorygame.presentation.ui.screen.fragment.game.MiniLevelFragment"
+        android:label="fragment_mini_level"
+        tools:layout="@layout/fragment_mini_level" >
+        <action
+            android:id="@+id/action_miniLevelFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="level"
+            app:argType="string"
+            android:defaultValue="4x4\neasy" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.memorygame.presentation.ui.screen.fragment.game.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <argument
+            android:name="data"
+            app:argType="com.example.memorygame.data.room.entity.GameEntity" />
+    </fragment>
+</navigation>
